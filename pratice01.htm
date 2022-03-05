@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+
+        .container{
+            max-width: 1440px;
+            background-color: gray;
+            padding: 150px 0 0;
+            display: flex;
+        }
+
+        .container .footer-item{ 
+            width: 0;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+
+        .container .footer-item h4{ 
+            color: white;
+            font-size: 24px;
+            padding-bottom: 0.5em;
+            border-bottom: 2px dotted white;
+            margin-bottom: 0.5em;
+        }
+
+        .container .footer-item nav{ 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container .footer-item nav a{ 
+            padding: 10px 0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .container .footer-item form{ 
+
+        }
+
+        .footer-subs{
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-footer">
+        <div class="container">
+            <div class="footer-item">
+                <h4>這是標題</h4>
+                <nav>
+                    <a href="#">第一項</a>
+                    <a href="#">第二項</a>
+                    <a href="#">第三項</a>
+                    <a href="#">第四項</a>
+                </nav>
+            </div>
+            <div class="footer-item">
+                <h4>這是標題</h4>
+                <nav>
+                    <a href="#">第一項</a>
+                    <a href="#">第二項</a>
+                    <a href="#">第三項</a>
+                    <a href="#">第四項</a>
+                </nav>
+            </div>
+            <div class="footer-item">
+                <h4>這是標題</h4>
+                <nav>
+                    <a href="#">第一項</a>
+                    <a href="#">第二項</a>
+                    <a href="#">第三項</a>
+                    <a href="#">第四項</a>
+                </nav>
+            </div>
+            <div class="footer-item footer-subs">
+                <h4>這是標題</h4>
+                <form action="">
+                    <input type="text">
+                    <button>送出</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            copyright
+        </div>
+    </div>
+</body>
+</html>
