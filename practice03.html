@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        body{
+            padding-top: 300px;
+            background-color: rgb(26, 65, 243);
+        }
+        .wrap{
+            width: 1200px;
+
+            margin: auto;
+            display: flex;
+        }
+
+        .wrap .card{
+            width: 380x;
+            margin: 0 10px;
+            background-color: #fff;
+            
+        }
+        .wrap .card:hover{
+            transform: translateY(-30px);
+            
+        }
+
+        .wrap .card img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+
+        .wrap .card .txt {
+            padding: 20px;
+            position: relative;
+        }
+        .wrap .card .txt::before {
+            content: '';
+            left: 0;
+            top: 0;
+            position: absolute;
+            border-top: 60px solid transparent;
+            border-right: 190px solid #fff;
+            border-left: 190px solid #fff;
+            transform: translateY(-100%);
+        }
+
+        .wrap .card .txt h3{
+            font-size: 24px;
+            text-align: center;
+            border-bottom: 1px solid rgb(10, 10, 10);
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+            <img src="https://picsum.photos/300/200/?random=10">
+            <div class="txt">
+                <h3>這是標題</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores corrupti culpa quasi laboriosam nihil perspiciatis numquam doloribus? Voluptate, est eius nostrum modi quam beatae, ullam ut sit quis commodi vel!</p>     
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/300/200/?random=11">
+            <div class="txt">
+                <h3>這是標題</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores corrupti culpa quasi laboriosam nihil perspiciatis numquam doloribus? Voluptate, est eius nostrum modi quam beatae, ullam ut sit quis commodi vel!</p>     
+            </div>
+        </div>
+        <div class="card">
+            <img src="https://picsum.photos/300/200/?random=12">
+            <div class="txt">
+                <h3>這是標題</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores corrupti culpa quasi laboriosam nihil perspiciatis numquam doloribus? Voluptate, est eius nostrum modi quam beatae, ullam ut sit quis commodi vel!</p>     
+            </div>
+        </div>
+    </div>
+</body>
+</html>

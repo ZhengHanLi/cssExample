@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="reset.css">
     <style>
 
+        .main-footer{
+
+            background-color: gray;
+        }
         .container{
             max-width: 1440px;
-            background-color: gray;
             padding: 150px 0 0;
             display: flex;
         }
@@ -40,12 +43,37 @@
             text-decoration: none;
         }
 
-        .container .footer-item form{ 
-
-        }
-
         .footer-subs{
             display: flex;
+            flex-direction: column;
+        }
+
+        .footer-subs form{ 
+            display: flex;
+            width: 100%;
+            margin: auto 0;
+        }
+
+
+        .footer-subs form input[type='text'],
+        .footer-subs form input[type='submit']{ 
+            border: none;
+            padding: 5px 10px; 
+        }
+
+        .footer-subs form input[type='text']{ 
+            width: 0;
+            flex-grow: 1;
+        }
+
+
+
+
+        .copyright
+        {
+            margin-top: 150px;
+            text-align: center;
+            background-color: rgb(173, 168, 168);
         }
     </style>
 </head>
@@ -83,12 +111,12 @@
                 <h4>這是標題</h4>
                 <form action="">
                     <input type="text">
-                    <button>送出</button>
+                    <input type="submit" value="送出">
                 </form>
             </div>
         </div>
         <div class="copyright">
-            copyright
+            copyright &copy; 這是版權位置
         </div>
     </div>
 </body>
