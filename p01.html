@@ -161,20 +161,12 @@
             background-color: #ffd;
         }
         .container .card-info > div{
-            /* width: 100%; */
-            /* background-color: #000; */
             margin-bottom: 40px;
         }
         .container .card-info h4{
-            /* width: 100%; */
-            /* background-color: #000; */
             margin-bottom: 10px;
         }
-        .container .card-info .card-num-inputs{
-            /* width: 100%; */
-            /* background-color: #000; */
-            /* margin-bottom: 20px; */
-        }
+
         .container .card-info .card-num-inputs .card-num-input-field input{
             width: 48px;
             border-radius: 5px;
@@ -251,10 +243,49 @@
             z-index: -1;
         } */
 
+        .order-info{
+            width: 200px;
+            height: 200px;
+            background-color: #D8D8D8;
+            position: absolute;
+            z-index: 1;
+            top: 80px;
+            /* left: -200px; */
+            transform: translateX(-100%);
+        }
+
+        #order-check{
+            position: absolute;
+            display: none;
+        }
+        #order-check:checked + .order-info{
+            transform: translateX(0);
+        }
+
+        .order-info label{
+            width: 30px;
+            height: 100px;
+            background-color: #D8D8D8;
+            right: -25px;
+            top: 0;
+            line-height: 1.5em;
+            /* border: 1px solid #000; */
+            text-align: center;
+            position: absolute;
+            border-radius: 10px;
+        }
+
+
+        .order-info ul li{
+            margin: 20px 0 20px  10px;
+        }
+
+        .order-info ul li h5{
+            color: #AFAFAF;
+            margin-bottom: 5px;
+        }
     </style>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"
-integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         window.onload=function(){
             
@@ -334,7 +365,17 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
 </head>
 <body>
     <div class="wrap">
-            
+         <input type="checkbox" id="order-check">
+
+        <div class="order-info">
+            <ul>
+                <li><div><h5>商品名稱：</h5><div class="txt">Iphone XR手機殼 x1</div></div></li>
+                <li><div><h5>訂單編號：</h5><div class="txt">17485739</div></div></li>
+                <li><div><h5>訂單金額：</h5><div class="txt">NT$ 600</div></div></li>
+            </ul>
+            <label for="order-check">訂單資訊</label>
+        </div>
+
         <div class="rundown">
             <div class="actived">
                 1
