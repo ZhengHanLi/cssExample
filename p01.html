@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            /* font-family: 'Noto Sans CJK TC'; */
+        }
+
+        .wrap{
+            height: 100vh;
+            max-width: 500px;
+        }
+
+        .rundown{
+            width: 100%;
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #D8D8D8;
+        }
+
+        .rundown div{
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            background-color: #8DEFCB;
+            position: relative;
+        }
+
+        .rundown div + div{
+            margin-left: 80px;
+        }
+
+        .rundown div + div::before{
+            content: '';
+            width: 100px;
+            height: 5px;
+            background-color: #8DEFCB;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100px;
+            margin: auto;
+            z-index: -1;
+        }
+
+
+        .rundown .actived ~ div{
+            background-color: #D8D8D8;
+        }
+
+        .rundown .actived ~ div::before{
+            content: '';
+            width: 100px;
+            height: 5px;
+            background-color: #D8D8D8;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100px;
+            margin: auto;
+            z-index: -1;
+        }
+
+        .container .title{
+            text-align: center;
+            position: relative;
+        }
+
+        .container .title::before{
+            content: '';
+            width: 100%;
+            height: 10px;
+            display: block;
+            background-color: #8DEFCB;
+            position: absolute;
+            bottom: 0;
+            z-index: -1;
+            
+        }
+
+        .pay{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pay .methods{
+            width: 200px;
+            height: 200px;
+            background-color: #F3F3F3;
+            margin: 10px 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* font-size: 16px; */
+            cursor: pointer;
+        }
+
+        .pay .methods .img{ 
+            width: 100px;
+            /* margin: 20px; */
+        } 
+
+        .pay .methods.card-selected{
+            background-color: #36B996;
+            background-image: #fff;
+            color: #fff;
+        }
+
+        .btn{
+            width: 100%;
+            padding: 30px 0;
+            display: flex;
+            justify-content: right;
+            border-bottom: 1px solid #D8D8D8;
+        }
+
+        .btn button{
+            width: 100px;
+            margin: 5px 40px;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border-style: none;
+            background-color: #36B996;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+                
+            // document.getElementsByClassName('methods')[0]
+            // .addEventListener('click', function (event) {
+            //     // do something
+            //     console.log(event)
+            // });
+
+            const methods = document.querySelectorAll('.methods');
+
+            for( let method of methods )
+            {
+                
+                method.addEventListener('click', () => {
+                    const d = document.querySelector('.card-selected');
+                    if( d!=null )
+                         d.classList.remove('card-selected');
+
+                    method.classList.add('card-selected');
+                });
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="wrap">
+            
+        <div class="rundown">
+            <div class="actived">
+                1
+            </div>
+            <div class="">
+                2
+            </div>
+            <div class="">
+                3
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="title">
+                <h3>SＴＥＰ1.選擇付款方式</h3>
+            </div>
+            <div class="pay">            
+                <div class="methods card-selected">
+                    <div class="img">
+                        <img src="img/credit-card.svg">
+                    </div>
+                    <div class="txt">信用卡/金融</div>
+                </div>
+                <div class="methods">
+                    <div class="img">
+                        <img src="img/unionpay.svg">
+                    </div>
+                    <div class="txt">銀聯卡</div>
+                </div>
+                <div class="methods">
+                    <div class="img">
+                        <img src="img/shop.svg">
+                    </div>
+                    <div class="txt">超商付款</div>
+                </div>
+                <div class="methods">
+                    <div class="img">
+                        <img src="img/web-atm.svg">
+                    </div>
+                    <div class="txt">Web ATM</div>
+                </div>
+                <div class="methods">
+                    <div class="img">
+                        <img src="img/atm.svg">
+                    </div>
+                    <div class="txt">ATM 轉帳</div>
+                </div>
+            </div>
+        </div>
+        <div class="btn">
+
+            <button>
+                下一步
+            </button>
+        </div>
+    </div>
+</body>
+</html>
