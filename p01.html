@@ -318,6 +318,7 @@
 
             function Switch()
             {
+                document.getElementById("order-check").checked=false
                 const deleteC = document.querySelector('.container.actived');
                 if( deleteC!=null )
                      deleteC.classList.remove('actived');
@@ -358,6 +359,8 @@
                     document.getElementById("prevBtn").style.display='none'
                     document.getElementById("nextBtn").style.display='none'
                     // document.getElementById("returnBtn").style.display='block'
+                    document.getElementById("order-title").style.display='none'
+                    
                 }
             }
         }
@@ -373,7 +376,7 @@
                 <li><div><h5>訂單編號：</h5><div class="txt">17485739</div></div></li>
                 <li><div><h5>訂單金額：</h5><div class="txt">NT$ 600</div></div></li>
             </ul>
-            <label for="order-check">訂單資訊</label>
+            <label for="order-check" id="order-title">訂單資訊</label>
         </div>
 
         <div class="rundown">
