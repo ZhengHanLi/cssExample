@@ -143,8 +143,9 @@
             border-radius: 5px;
             border-style: none;
             background-color: #36B996;
-
+            display: none;
         }
+        
 
         .footer{
             width: 100%;
@@ -215,7 +216,40 @@
             font-size: 16px;
             color: #D8D8D8;
         }
+        .container .complete-info{
+            height: 200px;
+            width: 100%;
+            background-image: url('img/finish.svg');
+            background-repeat: no-repeat;
+            /* background-attachment: fixed; */
+            background-position: center;
+            margin-top: 150px;
+            position: relative;
+        }
+        .container .complete-info::before{
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgb(121, 228, 214,.4);
+            display: block;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
+            z-index: -1;
+        }
+        /* .container .complete-info::after{
+            content: '稍後將寄送訂單資訊至您的Ｅ-mail';
+            position: absolute;
 
+            display: block;
+            bottom: -80px;
+            margin: 0 auto;
+            z-index: -1;
+        } */
 
     </style>
 
@@ -242,6 +276,17 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
             const nextBtn=document.getElementById("nextBtn")
             nextBtn.addEventListener('click', () => {
                 cur++;
+                Switch()
+            });
+            nextBtn.style.display='block'
+            const prevBtn=document.getElementById("prevBtn")
+            prevBtn.addEventListener('click', () => {
+                cur--;
+                Switch()
+            });
+
+            function Switch()
+            {
                 const deleteC = document.querySelector('.container.actived');
                 if( deleteC!=null )
                      deleteC.classList.remove('actived');
@@ -266,7 +311,23 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
                         rCnt++;
                 
                 }
-            });
+
+                if( cur==1 )
+                {
+                    document.getElementById("prevBtn").style.display='none'
+                }
+                if( cur==2 )
+                {
+                    document.getElementById("prevBtn").style.display='block'
+                    document.getElementById("nextBtn").textContent='確認付款'
+                }
+                if( cur==3 )
+                {
+                    document.getElementById("prevBtn").style.display='none'
+                    document.getElementById("nextBtn").style.display='none'
+                    // document.getElementById("returnBtn").style.display='block'
+                }
+            }
         }
     </script>
 </head>
@@ -389,7 +450,22 @@ integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="ano
                 </div>
             </div>
         </div>
+
+        <div class="container ">
+            <div class="title">
+                <h4>您的訂單已完成付款</h4>
+            </div>
+            <div class="complete-info">
+
+            </div>
+        </div>
         <div class="btn">
+            <button id="prevBtn">
+                回上一步
+            </button>
+            <button id="returnBtn">
+                返回首頁
+            </button>
             <button id="nextBtn">
                 下一步
             </button>
