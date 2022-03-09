@@ -86,14 +86,15 @@
             margin: 30px 0;
         }
 
-        .container .title::before{
+        .container .title::after{
             content: '';
-            width: 100%;
+            width: 12em;
             height: 10px;
             display: block;
             background-color: #8DEFCB;
-            position: absolute;
-            bottom: 0;
+            /* position: absolute;
+            bottom: 0; */
+            margin: auto;
             z-index: -1;
             
         }
@@ -174,7 +175,7 @@
             font-size: 18px;
         }
         .container .card-info .expire-date-inputs .expire-field select{
-            width: 80px;
+            width: 90px;
             border-radius: 5px;
             padding: 5px 10px;
             font-size: 18px;
@@ -324,6 +325,18 @@
                 Switch()
             });
 
+            const three_digit_Input=document.getElementById("three-digit")
+            three_digit_Input.addEventListener('keydown', function(){
+                if( (this.value.length>=3 )&&event.keyCode!=8 )
+                {
+                    if (event.preventDefault) {
+                        event.preventDefault();
+                    } else {
+                        event.returnValue = false;
+                    }
+                }
+            });
+
             function Switch()
             {
                 document.getElementById("order-check").checked=false
@@ -367,7 +380,7 @@
                     document.getElementById("prevBtn").style.display='none'
                     document.getElementById("nextBtn").style.display='none'
                     // document.getElementById("returnBtn").style.display='block'
-                    document.getElementById("order-title").style.display='none'
+                    document.querySelector(".order-info").style.display='none'
                     
                 }
             }
@@ -380,7 +393,7 @@
 
         <div class="order-info">
             <ul>
-                <li><div><h5>商品名稱：</h5><div class="txt">Iphone XR手機殼 x1</div></div></li>
+                <li><div><h5>商品1名稱：</h5><div class="txt">Iphone XR手機殼 x1</div></div></li>
                 <li><div><h5>訂單編號：</h5><div class="txt">17485739</div></div></li>
                 <li><div><h5>訂單金額：</h5><div class="txt">NT$ 600</div></div></li>
             </ul>
@@ -443,8 +456,8 @@
             </div>
             <div class="card-info">            
                 <div class="payMethods">
-                    <input type="radio" name="pay" id="">一次付款
-                    <input type="radio" name="pay" id="">分期付款
+                    <input type="radio" name="pay" checked>一次付款
+                    <input type="radio" name="pay" >分期付款
                 </div>
                 <div class="card-num-inputs">
                     <h4>信用卡號:</h4>
@@ -489,7 +502,7 @@
                 </div>
                 <div class="back-num-inputs">
                     <h4>背面末三碼:</h4>
-                    <input type="text">
+                    <input type="text" id="three-digit">
                 </div>
                 <div class="email-input">
                     <h4>填寫付款人信箱：</h4>
