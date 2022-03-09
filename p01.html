@@ -13,7 +13,7 @@
 
         .wrap{
             height: 100vh;
-            max-width: 500px;
+            max-width: 390px;
             border: 1px solid #D8D8D8;
             margin: auto;
         }
@@ -71,9 +71,19 @@
             z-index: -1;
         }
 
+        .container{
+            display: none;
+        }
+
+        .container.actived{
+            display: block;
+        }
+
         .container .title{
             text-align: center;
             position: relative;
+            font-size: 24px;
+            margin: 30px 0;
         }
 
         .container .title::before{
@@ -94,10 +104,10 @@
             justify-content: center;
         }
         .pay .methods{
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             background-color: #F3F3F3;
-            margin: 5px 15px;
+            margin: 15px 15px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -122,6 +132,8 @@
             padding: 30px 0;
             display: flex;
             justify-content: right;
+            position: absolute;
+            bottom: 50px;
         }
 
         .btn button{
@@ -131,20 +143,90 @@
             border-radius: 5px;
             border-style: none;
             background-color: #36B996;
+
         }
+
+        .footer{
+            width: 100%;
+            height: 50px;
+            background-image: url('/img/footer-background.svg');
+            position: absolute;
+            bottom: 0;
+        }
+
+        .container .card-info {
+            /* width: 100%; */
+            margin: 0 20px;
+            background-color: #ffd;
+        }
+        .container .card-info > div{
+            /* width: 100%; */
+            /* background-color: #000; */
+            margin-bottom: 40px;
+        }
+        .container .card-info h4{
+            /* width: 100%; */
+            /* background-color: #000; */
+            margin-bottom: 10px;
+        }
+        .container .card-info .card-num-inputs{
+            /* width: 100%; */
+            /* background-color: #000; */
+            /* margin-bottom: 20px; */
+        }
+        .container .card-info .card-num-inputs .card-num-input-field input{
+            width: 48px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+        .container .card-info .expire-date-inputs .expire-field select{
+            width: 80px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 18px;
+        }
+        .container .card-info .back-num-inputs input{
+            width: 48px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .container .card-info .email-input input{
+            width: 230px;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .container .card-info .confirm-info{
+            /* width: 230px; */
+            padding: 5px 10px;
+            font-size: 16px;
+            line-height: 1.5em;
+            text-align: center;
+        }
+
+        .container .card-info .confirm-info .third-info{
+            /* width: 230px; */
+            padding: 5px 10px;
+            font-size: 16px;
+            color: #D8D8D8;
+        }
+
+
     </style>
 
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         window.onload=function(){
-                
-            // document.getElementsByClassName('methods')[0]
-            // .addEventListener('click', function (event) {
-            //     // do something
-            //     console.log(event)
-            // });
+            
+            let cur=1;
 
             const methods = document.querySelectorAll('.methods');
-
             for( let method of methods )
             {
                 
@@ -157,6 +239,34 @@
                 });
             }
 
+            const nextBtn=document.getElementById("nextBtn")
+            nextBtn.addEventListener('click', () => {
+                cur++;
+                const deleteC = document.querySelector('.container.actived');
+                if( deleteC!=null )
+                     deleteC.classList.remove('actived');
+
+                const items = document.querySelectorAll('.container');
+                let cnt=1;
+                for( let item of items )
+                {    if(cnt==cur)
+                        item.classList.add('actived');
+                    cnt++;
+                
+                }
+                const deleteRun = document.querySelector('.rundown .actived');
+                if( deleteRun!=null )
+                    deleteRun.classList.remove('actived');
+
+                const rItems = document.querySelectorAll('.rundown div');
+                let rCnt=1;
+                for( let item of rItems )
+                {    if(rCnt==cur)
+                        item.classList.add('actived');
+                        rCnt++;
+                
+                }
+            });
         }
     </script>
 </head>
@@ -175,9 +285,9 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container actived">
             <div class="title">
-                <h3>SＴＥＰ1.選擇付款方式</h3>
+                <h4>SＴＥＰ1.選擇付款方式</h4>
             </div>
             <div class="pay">            
                 <div class="methods card-selected">
@@ -212,10 +322,80 @@
                 </div>
             </div>
         </div>
+
+        <div class="container ">
+            <div class="title">
+                <h4>SＴＥＰ2.選擇付款方式</h4>
+            </div>
+            <div class="card-info">            
+                <div class="payMethods">
+                    <input type="radio" name="pay" id="">一次付款
+                    <input type="radio" name="pay" id="">分期付款
+                </div>
+                <div class="card-num-inputs">
+                    <h4>信用卡號:</h4>
+                   <div class="card-num-input-field">
+                        <input type="text" data-pos="1" placeholder="XXXX">-
+                        <input type="text" data-pos="2" placeholder="XXXX">-
+                        <input type="text" data-pos="3" placeholder="XXXX">-
+                        <input type="text" data-pos="4" placeholder="XXXX">
+                   </div>
+                </div>
+                <div class="expire-date-inputs">
+                    <h4>有效月年：</h4>
+                    <div class="expire-field">
+                        <select name='expireMM' id='expireMM'>
+                            <option value=''>選擇</option>
+                            <option value='01'>01</option>
+                            <option value='02'>02</option>
+                            <option value='03'>03</option>
+                            <option value='04'>04</option>
+                            <option value='05'>05</option>
+                            <option value='06'>06</option>
+                            <option value='07'>07</option>
+                            <option value='08'>08</option>
+                            <option value='09'>09</option>
+                            <option value='10'>10</option>
+                            <option value='11'>11</option>
+                            <option value='12'>12</option>
+                        </select> 
+                        /
+                        <select name='expireYY' id='expireYY'>
+                            <option value=''>選擇</option>
+                            <option value='22'>2022</option>
+                            <option value='23'>2023</option>
+                            <option value='24'>2024</option>
+                            <option value='25'>2025</option>
+                            <option value='26'>2026</option>
+                            <option value='27'>2027</option>
+                            <option value='28'>2028</option>
+                        </select> 
+                        年
+                    </div>
+                </div>
+                <div class="back-num-inputs">
+                    <h4>背面末三碼:</h4>
+                    <input type="text">
+                </div>
+                <div class="email-input">
+                    <h4>填寫付款人信箱：</h4>
+                    <input type="text">
+                </div>
+                <div class="confirm-info">
+                    <input type="checkbox" name="" id="">請再次確認「訂單資訊」與「付款資訊」，付款完成後將發送通知信至您的Ｅ-mail信箱
+                    <div class="third-info">
+                        第三支付金流平台服務條款
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="btn">
-            <button>
+            <button id="nextBtn">
                 下一步
             </button>
+        </div>
+        <div class="footer">
+
         </div>
     </div>
 </body>
