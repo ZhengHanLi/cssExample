@@ -330,7 +330,7 @@
 
             dropArea.addEventListener('touchstart', dragStart);
             function dragStart() {
-
+                event.preventDefault()
                 document.addEventListener('touchmove', move);
                 document.addEventListener('touchend', stop);
             }
