@@ -328,31 +328,23 @@
             let startX = 0;
             let startY = 0;
 
-            dropArea.addEventListener('mousedown', dragStart);
+            dropArea.addEventListener('touchstart', dragStart);
+            function dragStart() {
 
-            function dragStart(e) {
-                e.preventDefault();
-                //記錄點擊相對被點擊物件的座標
-                startX = e.clientX - dropArea.offsetLeft;
-                startY = e.clientY - dropArea.offsetTop;
-                document.addEventListener('mousemove', move);
-                document.addEventListener('mouseup', stop);
+                document.addEventListener('touchmove', move);
+                document.addEventListener('touchend', stop);
             }
 
-            function move(e) {
-                //計算出拖曳物件最左上角座標
-                x = e.clientX - startX;
-                y = e.clientY - startY;
-                x = Math.max(Math.min(x, area.right), area.left);
-                y = Math.max(Math.min(y, area.bottom), area.top);
-                // dropArea.style.left = x + 'px';
-                dropArea.style.top = y + 'px';
-                // dropAreaSub.style.top = y + 'px';
+            function move() {
+                if(event.targetTouches.length > 1 || event.scale && event.scale !== 1) return;
+
+                let touch = event.targetTouches[0];
+                dropArea.style.top=touch.pageY+"px"
             }
 
             function stop() {
-                document.removeEventListener('mousemove', move);
-                document.removeEventListener('mouseup', stop)
+                document.removeEventListener('touchmove', move);
+                document.removeEventListener('touchend', stop)
             }
             
             let curStep=1;
