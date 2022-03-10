@@ -300,6 +300,39 @@
             
             let cur=1;
 
+            const cardInputs = document.querySelectorAll('.card-num-input-field input');
+            for( let cardInput of cardInputs )
+            {
+                cardInput.addEventListener('keydown',function(){
+
+                    let pos=parseInt(cardInput.dataset.pos )
+                    if( pos==1&&event.keyCode==8&&cardInput.value=="" )
+                    {
+                        event.preventDefault()
+                    }
+                    else if( event.keyCode==8&&cardInput.value=="")
+                    {
+                        document.querySelector(".card-num-input-field input[data-pos='"+(pos-1)+"']").focus()
+                    }
+                    else if( isNaN(parseInt(event.key) )&&event.keyCode!=8 )
+                    {
+                        event.preventDefault()
+                    }
+                    else if( pos==4 &&(cardInput.value+event.key).length>4&&event.keyCode!=8  )
+                    {
+                        event.preventDefault()
+                    }
+                    else if( event.keyCode!=8&&(cardInput.value+event.key).length>4 )
+                    {
+                        document.querySelector(".card-num-input-field input[data-pos='"+(pos+1)+"']").focus()
+                        document.querySelector(".card-num-input-field input[data-pos='"+(pos+1)+"']").value=""
+                    }
+                    // console.log(cardInput.dataset.pos )
+
+                })
+
+            }
+            
             const methods = document.querySelectorAll('.methods');
             for( let method of methods )
             {
@@ -327,7 +360,7 @@
 
             const three_digit_Input=document.getElementById("three-digit")
             three_digit_Input.addEventListener('keydown', function(){
-                if( (this.value.length>=3 )&&event.keyCode!=8 )
+                if( (this.value.length>=3 ||isNaN(parseInt(event.key) ))&&event.keyCode!=8 )
                 {
                     if (event.preventDefault) {
                         event.preventDefault();
