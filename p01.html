@@ -316,6 +316,44 @@
 
     <script>
         window.onload=function(){
+            let dropArea = document.querySelector('.drop-area');
+            let dropAreaSub = document.querySelector('.drop-area-sub');
+            let area = {
+                left: dropArea.offsetLeft,
+                right: dropArea.offsetLeft + dropArea.offsetWidth,
+                top: dropArea.offsetTop,
+                bottom: dropArea.offsetTop + dropArea.offsetHeight,
+            };
+
+            let startX = 0;
+            let startY = 0;
+
+            dropArea.addEventListener('mousedown', dragStart);
+
+            function dragStart(e) {
+                e.preventDefault();
+                //記錄點擊相對被點擊物件的座標
+                startX = e.clientX - dropArea.offsetLeft;
+                startY = e.clientY - dropArea.offsetTop;
+                document.addEventListener('mousemove', move);
+                document.addEventListener('mouseup', stop);
+            }
+
+            function move(e) {
+                //計算出拖曳物件最左上角座標
+                x = e.clientX - startX;
+                y = e.clientY - startY;
+                x = Math.max(Math.min(x, area.right), area.left);
+                y = Math.max(Math.min(y, area.bottom), area.top);
+                // dropArea.style.left = x + 'px';
+                dropArea.style.top = y + 'px';
+                // dropAreaSub.style.top = y + 'px';
+            }
+
+            function stop() {
+                document.removeEventListener('mousemove', move);
+                document.removeEventListener('mouseup', stop)
+            }
             
             let curStep=1;
             let paySelected=1;
@@ -430,7 +468,7 @@
                 {
                     document.querySelector(".container[data-step='"+curStep+"']").classList.add('actived');
                 }
-console.log("paySelected: "+paySelected+" curStep: "+curStep  )
+// console.log("paySelected: "+paySelected+" curStep: "+curStep  )
                 if( paySelected!=5 )
                 {
                     if( curStep==1 )
@@ -472,13 +510,13 @@ console.log("paySelected: "+paySelected+" curStep: "+curStep  )
     <div class="wrap">
          <input type="checkbox" id="order-check">
 
-        <div class="order-info">
+        <div class="order-info drop-area" >
             <ul>
-                <li><div><h5>商品1名稱：</h5><div class="txt">Iphone XR手機殼 x1</div></div></li>
+                <li><div><h5>商品名稱：</h5><div class="txt">Iphone XR手機殼 x1</div></div></li>
                 <li><div><h5>訂單編號：</h5><div class="txt">17485739</div></div></li>
                 <li><div><h5>訂單金額：</h5><div class="txt">NT$ 600</div></div></li>
             </ul>
-            <label for="order-check" id="order-title">訂單資訊</label>
+            <label for="order-check" id="order-title" class="drop-area-sub">訂單資訊</label>
         </div>
 
         <div class="rundown">
