@@ -85,6 +85,7 @@
             const suits=['S','H','D','C']
             let row_Nums=[6,6,6,6,7,7,7,7]
             let card=new Array();
+            let moveCnt=5;
             for(let suit of suits )
             {
                 for( let i=1;i<=13;i++ )
@@ -124,6 +125,10 @@
                     div.textContent=""+cardlist[index][i].suit+" "+cardlist[index][i].num
                     div.dataset.suit = cardlist[index][i].suit;
                     div.dataset.num = cardlist[index][i].num;
+                    if ( cardlist[index][i].suit=="S" || cardlist[index][i].suit=="C" )
+                        div.dataset.color = "black";
+                    else 
+                        div.dataset.color = "red";
                     zone.appendChild(div )
                     zone=zone.querySelector(".drag")
                 }
@@ -180,12 +185,11 @@
                     console.log( event.target )
                     if (event.target.className == "drop1zone" )
                     {
-
                         // event.target.style.background = "";
-                        
                         dragged.parentNode.removeChild( dragged );
                         dragged.classList.add("tmp")
                         event.target.appendChild( dragged );
+                        moveCnt--;
                     }
                 }
                 else if( event.target.className == "drop2zone" || event.target.classList.contains("ans") )
@@ -198,6 +202,7 @@
                         dragged.parentNode.removeChild( dragged );
                         dragged.classList.add("ans")
                         event.target.appendChild( dragged );
+                        moveCnt++;
                     }
                     else if ( dragged.dataset.suit==event.target.dataset.suit && parseInt(dragged.dataset.num)==parseInt(event.target.dataset.num)+1 )
                     {
@@ -207,16 +212,26 @@
                         dragged.parentNode.removeChild( dragged );
                         dragged.classList.add("ans")
                         event.target.appendChild( dragged );
+                        moveCnt++;
                     }
                 }
                 else if( event.target.childNodes.length==1 )
                 {
-                    if (event.target.className == "dropzone" || event.target.classList.contains("drag")) {
+                    if (event.target.className == "dropzone" ) {
                         // event.target.style.background = "";
                         dragged.parentNode.removeChild( dragged );
                         if(dragged.classList.contains("tmp") )
                             dragged.classList.remove("tmp")
                         event.target.appendChild( dragged );
+                        moveCnt++;
+                    }
+                    else if ( dragged.dataset.color!=event.target.dataset.color && parseInt(dragged.dataset.num)==parseInt(event.target.dataset.num)-1 ) {
+                        // event.target.style.background = "";
+                        dragged.parentNode.removeChild( dragged );
+                        if(dragged.classList.contains("tmp") )
+                            dragged.classList.remove("tmp")
+                        event.target.appendChild( dragged );
+                        moveCnt++;
                     }
                 }
 
