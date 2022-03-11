@@ -26,8 +26,25 @@
             background-color: rgba(196, 196, 193, 0.538);
             display: inline-block;
             box-sizing: border-box;
-
             margin: 10px;
+        }
+
+        .header .drop1zone::after
+        {
+            content: 'Tmp';
+            font-size: 25px;
+            line-height: 90px;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .header .drop2zone::after
+        {
+            content: 'Ans';
+            font-size: 25px;
+            line-height: 90px;
+            opacity: 0.3;
+            z-index: 1;
         }
 
 
@@ -53,8 +70,10 @@
             width: 60px;
             font-size: 20px;
             /* background-color: red; */
+            border: 1px solid #000;
             display: block;
             position: relative;
+            z-index: 2;
         }
         .block .dropzone .drag > .drag{
             position: absolute; 
@@ -143,6 +162,7 @@
 
             document.addEventListener("dragstart", function(event) {
                 // store a ref. on the dragged elem
+                
                 dragged = event.target;
                 // make it half transparent
                 event.target.style.opacity = .5;
@@ -179,11 +199,11 @@
                 // prevent default action (open as link for some elements)
                 event.preventDefault();
                 // move dragged elem to the selected drop target
-                console.log( dragged.dataset.suit )
+                // console.log( dragged.dataset.suit )
                 if( event.target.classList.contains("tmp") || event.target.className == "drop1zone" )
                 {
-                    console.log( event.target )
-                    if (event.target.className == "drop1zone" )
+                    // console.log( event.target )
+                    if (event.target.className == "drop1zone" && dragged.childNodes.length==1)
                     {
                         // event.target.style.background = "";
                         dragged.parentNode.removeChild( dragged );
