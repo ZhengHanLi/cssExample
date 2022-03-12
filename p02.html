@@ -27,14 +27,22 @@
             display: inline-block;
             box-sizing: border-box;
             margin: 10px;
+            position: relative;
         }
 
         .header .drop1zone::after
         {
             content: 'Tmp';
             font-size: 25px;
-            line-height: 90px;
-            opacity: 0.3;
+            width: 40px;
+            height: 20px;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
             z-index: 1;
         }
 
@@ -42,10 +50,16 @@
         {
             content: 'Ans';
             font-size: 25px;
-            line-height: 90px;
-            opacity: 0.3;
+            width: 40px;
+            height: 20px;
+            opacity: 0.1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            margin: auto;
             z-index: 1;
-            display: inline-block;
         }
 
 
