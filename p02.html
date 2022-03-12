@@ -192,7 +192,7 @@
                         div.classList.add("zIndexUp")
                     })
                     div.addEventListener("mouseup", function(event) {
-                        // div.classList.remove("zIndexUp")
+                        div.classList.remove("zIndexUp")
                     })
                     div.addEventListener("dblclick", function(event) {
                         event.stopPropagation()
@@ -333,16 +333,16 @@
 
             document.addEventListener("dragenter", function(event) {
                 // highlight potential drop target when the draggable element enters it
-                if (event.target.className == "dropzone") {
-                    event.target.style.background = "purple";
+                if (event.target.classList.contains("drag")&&childCnt(event.target)==1 ) {
+                    event.target.style.border = "thick solid #0000FF";
                 }
 
             }, false);
 
             document.addEventListener("dragleave", function(event) {
                 // reset background of potential drop target when the draggable element leaves it
-                if (event.target.className == "dropzone") {
-                    event.target.style.background = "";
+                if (event.target.classList.contains("drag")&&childCnt(event.target)==1) {
+                    event.target.style.border = "none";
                 }
 
             }, false);
@@ -393,6 +393,10 @@
                         dragged.parentNode.removeChild( dragged );
                         event.target.appendChild( dragged );
                     }
+
+                    if (event.target.classList.contains("drag")) {
+                    event.target.style.border = "none";
+                }
                 }
 
             }, false);
