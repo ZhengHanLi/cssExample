@@ -192,7 +192,7 @@
                         div.classList.add("zIndexUp")
                     })
                     div.addEventListener("mouseup", function(event) {
-                        div.classList.remove("zIndexUp")
+                        // div.classList.remove("zIndexUp")
                     })
                     div.addEventListener("dblclick", function(event) {
                         event.stopPropagation()
@@ -208,6 +208,11 @@
                                     dragged = event.target;
                                     dragged.parentNode.removeChild( dragged );
                                     dragged.classList.add("ans")
+                                    if(dragged.classList.contains("tmp") )
+                                    {
+                                        dragged.classList.remove("tmp")
+                                        moveCnt++;
+                                    }
                                     ansZone.appendChild( dragged );
                                     setCard=true
                                     break;
@@ -221,6 +226,11 @@
                                         dragged = event.target;
                                         dragged.parentNode.removeChild( dragged );
                                         dragged.classList.add("ans")
+                                        if(dragged.classList.contains("tmp") )
+                                        {
+                                            dragged.classList.remove("tmp")
+                                            moveCnt++;
+                                        }
                                         ansCard.appendChild( dragged );
                                         setCard=true
                                         break;
