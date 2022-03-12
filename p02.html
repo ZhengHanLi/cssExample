@@ -104,6 +104,7 @@
             position: relative;
             z-index: 2;
         }
+        
         .block .dropzone .drag > .drag{
             position: absolute; 
             top: 35px;
@@ -198,8 +199,9 @@
                     })
                     div.addEventListener("dblclick", function(event) {
                         event.stopPropagation()
+                        
                         // div.classList.add("zIndexUp")
-                        if(childCnt(event.target)==1 )
+                        if(childCnt(event.target)==1 && !event.target.classList.contains("ans"))
                         {
                             let ansZones=document.querySelectorAll(".drop2zone")
                             let setCard=false
@@ -284,7 +286,7 @@
                 // store a ref. on the dragged elem
                 
                 dragged = event.target;
-                if( childCnt(dragged)<=moveCnt && movelist(dragged) )
+                if( childCnt(dragged)<=moveCnt && movelist(dragged) && !dragged.classList.contains("ans") )
                 {
                     event.target.style.opacity = .5;                    
                     if(dragged.classList.contains("tmp") )
@@ -397,8 +399,8 @@
                     }
 
                     if (event.target.classList.contains("drag")) {
-                    event.target.style.border = "none";
-                }
+                        event.target.style.border = "none";
+                    }
                 }
 
             }, false);
