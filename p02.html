@@ -34,8 +34,8 @@
         {
             content: 'Tmp';
             font-size: 25px;
-            width: 40px;
-            height: 20px;
+            width: 30%;
+            height: 20%;
             opacity: 0.1;
             position: absolute;
             top: 0;
@@ -50,8 +50,8 @@
         {
             content: 'Ans';
             font-size: 25px;
-            width: 40px;
-            height: 20px;
+            width: 30%;
+            height: 20%;
             opacity: 0.1;
             position: absolute;
             top: 0;
@@ -115,6 +115,13 @@
         .zIndexUp
         {
             z-index: 10;
+        }
+
+
+        @media screen and (max-width:500px){
+            .wrap{
+                transform: rotate(90deg);
+            }
         }
     </style>
 
@@ -375,57 +382,60 @@
     </script>
 </head>
 <body>
-    <div class="header">
-        <div class="drop1zone">
+    <div class="wrap">
 
-        </div>
-        <div class="drop1zone">
-            
-        </div>
-        <div class="drop1zone">
-            
-        </div>
-        <div class="drop1zone">
-            
-        </div>
-        <div class="drop2zone">
-            
-        </div>
-        <div class="drop2zone">
-            
-        </div>
-        <div class="drop2zone">
-            
-        </div>
-        <div class="drop2zone">
-            
-        </div> 
-    </div>
+        <div class="header">
+            <div class="drop1zone">
 
-    <div class="block">
-        <div class="dropzone">
+            </div>
+            <div class="drop1zone">
+                
+            </div>
+            <div class="drop1zone">
+                
+            </div>
+            <div class="drop1zone">
+                
+            </div>
+            <div class="drop2zone">
+                
+            </div>
+            <div class="drop2zone">
+                
+            </div>
+            <div class="drop2zone">
+                
+            </div>
+            <div class="drop2zone">
+                
+            </div> 
+        </div>
 
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
-        </div>
-        <div class="dropzone">
-            
+        <div class="block">
+            <div class="dropzone">
+
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
+            <div class="dropzone">
+                
+            </div>
         </div>
     </div>
 </body>
