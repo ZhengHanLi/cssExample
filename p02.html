@@ -189,6 +189,10 @@
                         if( event.target.childElementCount==1)
                             event.target.childNodes[0].style.opacity=".1"
                     })
+                    div.addEventListener("mousemove", function(event) {
+                        if( event.target.childElementCount==1)
+                            event.target.childNodes[0].style.opacity="1"
+                    })
                     div.addEventListener("mouseup", function(event) {
                         if( event.target.childElementCount==1)
                             event.target.childNodes[0].style.opacity="1"
