@@ -37,7 +37,7 @@
             margin: 10px;
             position: relative;
             border: 1px solid #FFAC4E;
-            border-radius: 6px;
+            border-radius: 10px;
             box-shadow: 0px 6px 6px #FFFFFF29;
         }
 
@@ -91,6 +91,7 @@
             box-sizing: border-box;
             border: 1px solid #FFAC4E;
             margin: 0 10px;
+            border-radius: 10px;
         }
 
         .drag{
@@ -187,6 +188,7 @@
                         div.dataset.color = "red";
                     div.style.backgroundImage='url("img/P02/'+suit+num+'.png")'
                     div.style.backgroundSize="cover"
+                    div.style.borderRadius="10px"
                     div.addEventListener("mousedown", function(event) {
                         event.stopPropagation()
                         div.classList.add("zIndexUp")
