@@ -127,12 +127,6 @@
             background-color: rgb(106, 110, 110);
         }
 
-        .zIndexUp
-        {
-            z-index: 10;
-        }
-
-
     </style>
 
     <script>
@@ -192,15 +186,16 @@
                     div.style.borderRadius="10px"
                     div.addEventListener("mousedown", function(event) {
                         event.stopPropagation()
-                        div.classList.add("zIndexUp")
+                        if( event.target.childElementCount==1)
+                            event.target.childNodes[0].style.opacity=".1"
                     })
                     div.addEventListener("mouseup", function(event) {
-                        div.classList.remove("zIndexUp")
+                        if( event.target.childElementCount==1)
+                            event.target.childNodes[0].style.opacity="1"
                     })
                     div.addEventListener("dblclick", function(event) {
                         event.stopPropagation()
                         
-                        // div.classList.add("zIndexUp")
                         if(childCnt(event.target)==1 && !event.target.classList.contains("ans"))
                         {
                             let ansZones=document.querySelectorAll(".drop2zone")
