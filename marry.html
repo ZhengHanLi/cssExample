@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .wrap{
+            max-width: 500px;
+            background-color: #ffd;
+        }
+
+        .page{
+            width: 100%;
+            height: 100vh;
+            /* margin: auto; */
+            position: relative;
+        }
+
+        .page .header{
+            letter-spacing: 1em;
+            margin-bottom: 2em;
+        }
+
+        .page .weddingPerson
+        {
+            position: absolute;
+            font-size: 14px;
+            letter-spacing: .5em;
+            width: 1em;
+            right: 2em;
+            top: 3em;
+        }
+
+        .banner{
+            width: 90%;
+            height: 34vh;
+            /* background-color: #0f0; */
+            margin: auto;
+        }
+
+        .banner::before{
+            content: "2022";
+            font-size: 10px;
+        }
+
+        .banner .weddingDate{
+            width: 35%;
+            height: 65%;
+            font-size: 24px;
+            color: #fff;
+            background-color: rgb(139, 136, 136);
+        }
+
+        .banner .weddingDate .pic{
+            margin-left: 15px;
+            width: 400px;
+            position: relative;
+        }
+
+        .banner .weddingDate .pic img{
+            /* z-index: 1; */
+            width: 400px;
+            height: 210px;
+        }
+
+        .banner .weddingDate .pic p{
+            color: #fff;
+            font-size: 30px;
+            position: absolute;
+            right: 0;
+            bottom: -10px;
+        }
+
+        .banner .weddingDate .pic p::after{
+            content: 'invitation';
+            color:rgb(190, 195, 199);
+            font-size: 16px;
+            display: block;
+            margin-top: -10px;
+            margin-left:5em ;
+        }
+
+        .centerImg {
+            width: 90%;
+            height: 25vh;
+            margin: auto;
+            padding-top: 50px;
+            /* background-color: #ddd; */
+        }
+
+        .centerImg .circle{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+            margin: auto;
+            /* background-color: #ccc; */
+        }
+        .centerImg .circle{
+            color: #ccc;
+            line-height: 120px;
+            text-align: center;
+        }
+
+        .content{
+            width: 90%;
+            margin: auto;
+        }
+
+        .content p{
+            color: #ccc;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="page">
+            <div class="weddingPerson">
+                羅秉鏞 ＆ 李宛芯
+            </div>
+
+            <div class="header">有你的地方就是幸福</div>
+            <div class="banner">
+                <div class="weddingDate">
+                    Dec. 03
+                    <div class="pic">
+                        <img src="img/m1.jpeg">
+                        <p>WEDDING</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="centerImg">
+                <div class="circle">
+                    <p>終於等到你</p>
+                </div>
+            </div>
+            <div class="content">
+                <p>
+                    2022 / 12 / 03 18:00
+                </p>
+                <p>
+                    阿沐婚宴會館
+                </p>
+                <p>
+                    桃園市平鎮區 ...
+                </p>
+            </div>
+        </div>
+        <div class="page">
+            123
+        </div>
+    </div>
+</body>
+</html>
