@@ -122,11 +122,32 @@
         var numOfPages, // 取得section
         curPage = 0, //起始頁
         scrollLock = false; //滾動開關
+        var startx,starty,endx,endy;
+
+        document.addEventListener("touchstart",function(e){
+            startx=e.touches[0].pageX;
+            starty=e.touches[0].pageY;
+        })
+
+        document.addEventListener("touchend",function(e){
+            endx=e.changeTouches[0].pageX;
+            endy=e.changeTouches[0].pageY;
+
+            let changey=endy-starty
+            if( changey<=-100 )
+                navigateUp();
+            else
+                navigateDown();
+        })
+
         window.onload=function()
         {
             $section = $('.page');
             numOfPages = $section.length - 1 // 取得section
         }
+
+
+
 function scrollPage() {
 //滑鼠滾動
 $(document).on("mousewheel DOMMouseScroll", function(e) {
