@@ -136,12 +136,12 @@
         scrollLock = false; //滾動開關
         var startx,starty,endx,endy;
 
-        document.addEventListener("touchstart", touchStart,function(e){
+        document.addEventListener("touchstart",function(e){
             startx=e.touches[0].pageX;
             starty=e.touches[0].pageY;
-        })
+        },false)
 
-        document.addEventListener("touchend", touchEnd,function(e){
+        document.addEventListener("touchend",function(e){
             endx=e.changeTouches[0].pageX;
             endy=e.changeTouches[0].pageY;
             alert("xxxxx")
@@ -150,7 +150,7 @@
                 navigateUp();
             else
                 navigateDown();
-        })
+        },false)
 
         window.onload=function()
         {
