@@ -32,6 +32,19 @@
             width: 1em;
             right: 2em;
             top: 3em;
+            /* background-color: red; */
+            animation-name: oxxo;
+            animation-duration:2s;
+        }
+
+
+        @keyframes oxxo{
+            from{
+                right:-1em;
+            }
+            to{
+                right:2em;
+            }
         }
 
         .banner{
@@ -245,16 +258,16 @@ $(function() {
                 <div class="attention">
                     <div class="title">是否赴宴?</div>
                     <div class="content">
-                        <input type="radio" name="" id="" checked>非常樂意
-                        <input type="radio" name="" id="">尚未決定
-                        <input type="radio" name="" id="">無法參加
+                        <input type="radio" name="attention" id="" checked>非常樂意
+                        <input type="radio" name="attention" id="">尚未決定
+                        <input type="radio" name="attention" id="">無法參加
                     </div>
                 </div>
                 <div class="letter">
                     <div class="title">需要寄送喜帖嗎？</div>
                     <div class="content">
-                        <input type="radio" name="" id="" checked>需要
-                        <input type="radio" name="" id="">不需要
+                        <input type="radio" name="letter" id="" checked>需要
+                        <input type="radio" name="letter" id="">不需要
                     </div>
                 </div>
                 <div class="memo">
@@ -263,6 +276,7 @@ $(function() {
                         <textarea name="" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
+                <input type="submit" value="確定送出">
             </form>
         </div>
     </div>
