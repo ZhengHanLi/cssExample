@@ -136,15 +136,15 @@
         scrollLock = false; //滾動開關
         var startx,starty,endx,endy;
 
-        document.addEventListener("touchstart",function(e){
+        document.addEventListener("touchstart", touchStart,function(e){
             startx=e.touches[0].pageX;
             starty=e.touches[0].pageY;
         })
 
-        document.addEventListener("touchend",function(e){
+        document.addEventListener("touchend", touchEnd,function(e){
             endx=e.changeTouches[0].pageX;
             endy=e.changeTouches[0].pageY;
-
+            alert("xxxxx")
             let changey=endy-starty
             if( changey<=-50 )
                 navigateUp();
@@ -183,7 +183,6 @@ $(document).on("keydown", function(e) {
 function navigateUp () {
   if (curPage === 0) return;
   curPage--;
-  alert("xxx")
   pagination();
 };
 // 下滾動
