@@ -32,9 +32,8 @@
             width: 1em;
             right: 2em;
             top: 3em;
-            /* background-color: red; */
             animation-name: oxxo;
-            animation-duration:2s;
+            animation-duration:4s;
         }
 
 
@@ -195,6 +194,15 @@ function navigateDown() {
 // 滾動至上/下區塊
 function pagination() {
   scrollLock = true;
+  document.querySelector(".page .weddingPerson").style.animation="none"
+  if( curPage==0 )
+  {
+    document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
+  }
+  else if( curPage==2 )
+  {
+
+  }
   $body.stop().animate({
     scrollTop: $section.eq(curPage).offset().top
   }, 1000, 'swing', function(){
