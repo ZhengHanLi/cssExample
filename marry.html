@@ -136,21 +136,33 @@
         scrollLock = false; //滾動開關
         var startx,starty,endx,endy;
 
-        document.addEventListener("touchstart",function(e){
-            startx=e.touches[0].pageX;
-            starty=e.touches[0].pageY;
-        },false)
+        // document.addEventListener("touchstart",function(e){
+        //     startx=e.touches[0].pageX;
+        //     starty=e.touches[0].pageY;
+        // },false)
 
-        document.addEventListener("touchend",function(e){
-            endx=e.changeTouches[0].pageX;
-            endy=e.changeTouches[0].pageY;
-            alert("xxxxx")
-            let changey=endy-starty
-            if( changey<=-50 )
-                navigateUp();
-            else
+        // document.addEventListener("touchend",function(e){
+        //     endx=e.changeTouches[0].pageX;
+        //     endy=e.changeTouches[0].pageY;
+        //     alert("xxxxx")
+        //     let changey=endy-starty
+        //     if( changey<=-50 )
+        //         navigateUp();
+        //     else
+        //         navigateDown();
+        // },false)
+        var lastScrollTop = 0;
+        document.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+            if (st > lastScrollTop){
+                // downscroll code
                 navigateDown();
-        },false)
+            } else {
+                // upscroll code
+                navigateUp();
+            }
+            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        }, false);
 
         window.onload=function()
         {
@@ -162,21 +174,21 @@
 
 function scrollPage() {
 //滑鼠滾動
-$(document).on("mousewheel DOMMouseScroll", function(e) {
-    if (scrollLock) return;
-    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
-    navigateUp();
-    else
-    navigateDown();
-});
-//鍵盤上下鍵
-$(document).on("keydown", function(e) {
-    if (scrollLock) return;
-    if (e.which === 38)
-    navigateUp();
-    else if (e.which === 40)
-    navigateDown();
-});
+// $(document).on("mousewheel DOMMouseScroll", function(e) {
+//     if (scrollLock) return;
+//     if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
+//     navigateUp();
+//     else
+//     navigateDown();
+// });
+// //鍵盤上下鍵
+// $(document).on("keydown", function(e) {
+//     if (scrollLock) return;
+//     if (e.which === 38)
+//     navigateUp();
+//     else if (e.which === 40)
+//     navigateDown();
+// });
 }
 
 // 上滾動
