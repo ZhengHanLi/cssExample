@@ -151,18 +151,48 @@
         //     else
         //         navigateDown();
         // },false)
+                
+        let lastKnownScrollPosition = 0;
+        let ticking = false;
         var lastScrollTop = 0;
-        document.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-            var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-            if (st > lastScrollTop){
+        function doSomething(scrollPos) {
+        // 依據捲動位置進行某些操作
+            if (scrollPos > lastScrollTop){
                 // downscroll code
                 navigateDown();
             } else {
                 // upscroll code
                 navigateUp();
             }
-            lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-        }, false);
+            lastScrollTop = scrollPos <= 0 ? 0 : scrollPos; // For Mobile or negative scrolling
+        }
+
+        document.addEventListener('scroll', function(e) {
+            lastKnownScrollPosition = window.scrollY;
+
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                doSomething(lastKnownScrollPosition);
+                ticking = false;
+                });
+
+                ticking = true;
+            }
+        });
+
+
+        // var lastScrollTop = 0;
+        // document.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+        //     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        //     if (st > lastScrollTop){
+        //         // downscroll code
+        //         navigateDown();
+        //     } else {
+        //         // upscroll code
+        //         navigateUp();
+        //     }
+        //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        // }, false);
 
         window.onload=function()
         {
