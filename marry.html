@@ -177,6 +177,8 @@
                 });
 
             }
+            else
+                event.preventDefault();
         });
 
 
@@ -247,7 +249,7 @@ function pagination() {
   $body.stop().animate({
     scrollTop: $section.eq(curPage).offset().top
   }, 1000, 'swing', function(){
-    scrollLock = false;
+    setTimeout(function(){scrollLock = false;},500) 
   });
 };
 
