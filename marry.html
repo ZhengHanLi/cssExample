@@ -169,17 +169,19 @@
         document.addEventListener('scroll', function(e) {
             if (scrollLock) return;
             lastKnownScrollPosition = window.scrollY;
-
             if (!scrollLock) {
                 window.requestAnimationFrame(function() {
-                    console.log(lastKnownScrollPosition )
                     doSomething(lastKnownScrollPosition);
                     
                 });
 
             }
             else
+            {
+
                 event.preventDefault();
+                event.stopPropagation()
+            }
         });
 
 
@@ -237,22 +239,22 @@ function navigateDown() {
 };
 // 滾動至上/下區塊
 function pagination() {
-  scrollLock = true;
-  document.querySelector(".page .weddingPerson").style.animation="none"
-  if( curPage==0 )
-  {
-    document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
-  }
-  else if( curPage==2 )
-  {
+    scrollLock = true;
+    document.querySelector(".page .weddingPerson").style.animation="none"
+    if( curPage==0 )
+    {
+        document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
+    }
+    else if( curPage==2 )
+    {
 
-  }
-  $body.stop().animate({
-    scrollTop: $section.eq(curPage).offset().top
-  }, 1000, 'swing', function(){
-    // setTimeout(function(){scrollLock = false;},1000)
-    scrollLock = false; 
-  });
+    }
+    $body.stop().animate({
+        scrollTop: $section.eq(curPage).offset().top
+    }, 1500, 'swing', function(){
+        setTimeout(function(){scrollLock = false;},500)
+        // scrollLock = false; 
+    });
 };
 
 $(function() {
@@ -374,11 +376,6 @@ $(function() {
         alert("儲存發生問題 請聯絡09xxxxxx")
         }
 
-        // const querySnapshot = await getDocs(collection(db, "users"));
-        // console.log(querySnapshot )
-        // querySnapshot.forEach((doc) => {
-        // console.log(`${doc.id} => ${doc.data()}`);
-        // });
       </script>
 </body>
 </html>
