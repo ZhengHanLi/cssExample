@@ -7,16 +7,25 @@
     <title>Document</title>
 
     <style>
+        body{
+            background-color: rgb(75, 70, 70);
+        }
+
         .wrap{
-            max-width: 500px;
-            /* background-color: #ffd; */
+            width: 64.8vh;
+            background-color: #fff;
+            margin: auto;
+            height: 100vh;
+            scroll-snap-type: y mandatory;
+            overflow-y: scroll;
         }
 
         .page{
-            width: 100vw;
+            width: 100%;
             height: 100vh;
             /* margin: auto; */
             position: relative;
+            scroll-snap-align: start;
         }
 
         .page .header{
@@ -73,9 +82,7 @@
         }
 
         .banner .weddingDate .pic img{
-            /* z-index: 1; */
-            width: 100%;
-            /* height: 210px; */
+            width: 54.8vh;
         }
 
         .banner .weddingDate .pic p{
@@ -136,21 +143,67 @@
         scrollLock = false; //滾動開關
         var startx,starty,endx,endy;
 
-        document.addEventListener("touchstart",function(e){
-            startx=e.touches[0].pageX;
-            starty=e.touches[0].pageY;
-        },false)
+        // document.addEventListener("touchstart",function(e){
+        //     startx=e.touches[0].pageX;
+        //     starty=e.touches[0].pageY;
+        // },false)
 
-        document.addEventListener("touchend",function(e){
-            endx=e.changeTouches[0].pageX;
-            endy=e.changeTouches[0].pageY;
-            alert("xxxxx")
-            let changey=endy-starty
-            if( changey<=-50 )
-                navigateUp();
-            else
+        // document.addEventListener("touchend",function(e){
+        //     endx=e.changeTouches[0].pageX;
+        //     endy=e.changeTouches[0].pageY;
+        //     alert("xxxxx")
+        //     let changey=endy-starty
+        //     if( changey<=-50 )
+        //         navigateUp();
+        //     else
+        //         navigateDown();
+        // },false)
+                
+        let lastKnownScrollPosition = 0;
+        var lastScrollTop = 0;
+        function doSomething(scrollPos) {
+        // 依據捲動位置進行某些操作
+            if (scrollPos > lastScrollTop){
+                // downscroll code
                 navigateDown();
-        },false)
+            } else {
+                // upscroll code
+                navigateUp();
+            }
+            lastScrollTop = scrollPos <= 0 ? 0 : scrollPos; // For Mobile or negative scrolling
+        }
+
+        document.addEventListener('scroll', function(e) {
+            // if (scrollLock) return;
+            // lastKnownScrollPosition = window.scrollY;
+            // if (!scrollLock) {
+            //     window.requestAnimationFrame(function() {
+            //         doSomething(lastKnownScrollPosition);
+                    
+            //     });
+
+            // }
+            // else
+            // {
+
+            //     event.preventDefault();
+            //     event.stopPropagation()
+            // }
+        });
+
+
+        // var lastScrollTop = 0;
+        // document.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
+        //     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+        //     if (st > lastScrollTop){
+        //         // downscroll code
+        //         navigateDown();
+        //     } else {
+        //         // upscroll code
+        //         navigateUp();
+        //     }
+        //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        // }, false);
 
         window.onload=function()
         {
@@ -162,21 +215,21 @@
 
 function scrollPage() {
 //滑鼠滾動
-$(document).on("mousewheel DOMMouseScroll", function(e) {
-    if (scrollLock) return;
-    if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
-    navigateUp();
-    else
-    navigateDown();
-});
-//鍵盤上下鍵
-$(document).on("keydown", function(e) {
-    if (scrollLock) return;
-    if (e.which === 38)
-    navigateUp();
-    else if (e.which === 40)
-    navigateDown();
-});
+// $(document).on("mousewheel DOMMouseScroll", function(e) {
+//     if (scrollLock) return;
+//     if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
+//     navigateUp();
+//     else
+//     navigateDown();
+// });
+// //鍵盤上下鍵
+// $(document).on("keydown", function(e) {
+//     if (scrollLock) return;
+//     if (e.which === 38)
+//     navigateUp();
+//     else if (e.which === 40)
+//     navigateDown();
+// });
 }
 
 // 上滾動
@@ -193,21 +246,22 @@ function navigateDown() {
 };
 // 滾動至上/下區塊
 function pagination() {
-  scrollLock = true;
-  document.querySelector(".page .weddingPerson").style.animation="none"
-  if( curPage==0 )
-  {
-    document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
-  }
-  else if( curPage==2 )
-  {
+    scrollLock = true;
+    document.querySelector(".page .weddingPerson").style.animation="none"
+    if( curPage==0 )
+    {
+        document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
+    }
+    else if( curPage==2 )
+    {
 
-  }
-  $body.stop().animate({
-    scrollTop: $section.eq(curPage).offset().top
-  }, 1000, 'swing', function(){
-    scrollLock = false;
-  });
+    }
+    $body.stop().animate({
+        scrollTop: $section.eq(curPage).offset().top
+    }, 1500, 'swing', function(){
+        setTimeout(function(){scrollLock = false;},500)
+        // scrollLock = false; 
+    });
 };
 
 $(function() {
@@ -288,11 +342,12 @@ $(function() {
             </form>
         </div>
     </div>
-    
+
     <script type="module">
+        // https://firebase.google.com/docs/firestore/quickstart
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, getDocs   } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -301,6 +356,7 @@ $(function() {
         const firebaseConfig = {
           apiKey: "AIzaSyBfhCQUvp4L7Jp2YrNuKF4Xl8eaCJtM-PU",
           authDomain: "orangemarry-4f939.firebaseapp.com",
+          databaseURL: "https://orangemarry-4f939-default-rtdb.firebaseio.com",
           projectId: "orangemarry-4f939",
           storageBucket: "orangemarry-4f939.appspot.com",
           messagingSenderId: "964771691091",
@@ -310,8 +366,23 @@ $(function() {
       
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        
+        const db = getFirestore();
+
+        try {
+            // const docRef = await addDoc11(collection(db, "attend"), {
+            //     name: "政翰",
+            //     attend: "出席",
+            //     big:1,
+            //     small:2,
+            //     vegetarian:0,
+            //     letter:"需要",
+            //     addres:"桃園市"
+            // });
+            // console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+        alert("儲存發生問題 請聯絡09xxxxxx")
+        }
+
       </script>
 </body>
 </html>
