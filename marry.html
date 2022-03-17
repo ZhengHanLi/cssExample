@@ -41,10 +41,11 @@
             font-size: 14px;
             letter-spacing: .5em;
             width: 1em;
-            right: 2em;
+            right: 4em;
             top: 3em;
             animation-name: oxxo;
             animation-duration:4s;
+            z-index: 2;
         }
 
 
@@ -53,7 +54,7 @@
                 right:-1em;
             }
             to{
-                right:2em;
+                right:4em;
             }
         }
 
@@ -69,33 +70,25 @@
             font-size: 10px;
         }
 
-        .banner .weddingDate{
-            width: 35%;
-            height: 65%;
-            font-size: 24px;
-            color: #fff;
-            background-color: rgb(139, 136, 136);
-        }
-
-        .banner .weddingDate .pic{
+        .banner .pic{
             margin-left: 15px;
-            width: 80vw;
+            width: 100%;
             position: relative;
         }
 
-        .banner .weddingDate .pic img{
-            width: 54.8vh;
+        .banner .pic img{
+            width: 90% ;
         }
 
-        .banner .weddingDate .pic p{
+        .banner .pic p{
             color: #fff;
             font-size: 30px;
             position: absolute;
-            right: 0;
+            right: 1.5em;
             bottom: -10px;
         }
 
-        .banner .weddingDate .pic p::after{
+        .banner .pic p::after{
             content: 'invitation';
             color:rgb(190, 195, 199);
             font-size: 16px;
@@ -138,137 +131,7 @@
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
     <script>
-        const $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
-        var $section;
-        var numOfPages, // 取得section
-        curPage = 0, //起始頁
-        scrollLock = false; //滾動開關
-        var startx,starty,endx,endy;
-
-        // document.addEventListener("touchstart",function(e){
-        //     startx=e.touches[0].pageX;
-        //     starty=e.touches[0].pageY;
-        // },false)
-
-        // document.addEventListener("touchend",function(e){
-        //     endx=e.changeTouches[0].pageX;
-        //     endy=e.changeTouches[0].pageY;
-        //     alert("xxxxx")
-        //     let changey=endy-starty
-        //     if( changey<=-50 )
-        //         navigateUp();
-        //     else
-        //         navigateDown();
-        // },false)
-                
-        let lastKnownScrollPosition = 0;
-        var lastScrollTop = 0;
-        function doSomething(scrollPos) {
-        // 依據捲動位置進行某些操作
-            if (scrollPos > lastScrollTop){
-                // downscroll code
-                navigateDown();
-            } else {
-                // upscroll code
-                navigateUp();
-            }
-            lastScrollTop = scrollPos <= 0 ? 0 : scrollPos; // For Mobile or negative scrolling
-        }
-
-        document.addEventListener('scroll', function(e) {
-            // if (scrollLock) return;
-            // lastKnownScrollPosition = window.scrollY;
-            // if (!scrollLock) {
-            //     window.requestAnimationFrame(function() {
-            //         doSomething(lastKnownScrollPosition);
-                    
-            //     });
-
-            // }
-            // else
-            // {
-
-            //     event.preventDefault();
-            //     event.stopPropagation()
-            // }
-        });
-
-
-        // var lastScrollTop = 0;
-        // document.addEventListener("scroll", function(){ // or window.addEventListener("scroll"....
-        //     var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-        //     if (st > lastScrollTop){
-        //         // downscroll code
-        //         navigateDown();
-        //     } else {
-        //         // upscroll code
-        //         navigateUp();
-        //     }
-        //     lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-        // }, false);
-
-        window.onload=function()
-        {
-            $section = $('.page');
-            numOfPages = $section.length - 1 // 取得section
-        }
-
-
-
-function scrollPage() {
-//滑鼠滾動
-// $(document).on("mousewheel DOMMouseScroll", function(e) {
-//     if (scrollLock) return;
-//     if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0)
-//     navigateUp();
-//     else
-//     navigateDown();
-// });
-// //鍵盤上下鍵
-// $(document).on("keydown", function(e) {
-//     if (scrollLock) return;
-//     if (e.which === 38)
-//     navigateUp();
-//     else if (e.which === 40)
-//     navigateDown();
-// });
-}
-
-// 上滾動
-function navigateUp () {
-  if (curPage === 0) return;
-  curPage--;
-  pagination();
-};
-// 下滾動
-function navigateDown() {
-  if (curPage === numOfPages) return;
-  curPage++;
-  pagination();
-};
-// 滾動至上/下區塊
-function pagination() {
-    scrollLock = true;
-    document.querySelector(".page .weddingPerson").style.animation="none"
-    if( curPage==0 )
-    {
-        document.querySelector(".page .weddingPerson").style.animation = "oxxo 4s"
-    }
-    else if( curPage==2 )
-    {
-
-    }
-    $body.stop().animate({
-        scrollTop: $section.eq(curPage).offset().top
-    }, 1500, 'swing', function(){
-        setTimeout(function(){scrollLock = false;},500)
-        // scrollLock = false; 
-    });
-};
-
-$(function() {
-  scrollPage();
-});
+    
     </script>
 </head>
 <body>
@@ -280,14 +143,10 @@ $(function() {
 
             <div class="header">有你的地方就是幸福</div>
             <div class="banner">
-                <div class="weddingDate">
-                    Dec. 03
-                    <div class="pic">
-                        <img src="img/m1.jpeg">
-                        <p>WEDDING</p>
-                    </div>
+                <div class="pic">
+                    <img src="img/m1.jpeg">
+                    <p>WEDDING</p>
                 </div>
-
             </div>
             <div class="centerImg">
                 <div class="circle">
