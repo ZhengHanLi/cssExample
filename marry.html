@@ -149,13 +149,40 @@
             text-align: center;
         }
 
+
+        .page2 .header{
+            padding-top: 2em;
+            letter-spacing: 1em;
+            /* margin-top: 3em; */
+        }
+
+        .page2 .side-txt{
+            position: fixed;
+            width: 1.5em;
+            /* letter-spacing: 2em; */
+            line-height: 2em;
+            top: 5em;
+            right: 2em;
+            animation: side-animation 2s;
+            display: none;
+        }
+
+        @keyframes side-animation{
+            from{
+                top:2em;
+            }
+            to{
+                top:5em;
+            }
+        }
+
         .page2 .banner {
  
         }
 
         .page2 .banner img{
             width: 95%;
-            margin: 20px 10px ;
+            margin: 10px 10px ;
         }
 
         .page2 .banner .txt{
@@ -184,7 +211,25 @@
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
     <script>
-    
+        document.addEventListener('scroll', function(e) {
+        alert( window.scrollY );
+
+        // if (!ticking) {
+        //     window.requestAnimationFrame(function() {
+        //     doSomething(lastKnownScrollPosition);
+        //     ticking = false;
+        //     });
+
+        //     ticking = true;
+        // }
+        });
+        window.onload=function(){
+            // alert(window.innerHeight)
+            // alert(document.getElementById("page1").scrollHeight )
+            // document.addEventListener('scroll',function(){
+            //     alert("asd")
+            // })
+        }
     </script>
 </head>
 <body>
@@ -219,6 +264,10 @@
             </div>
         </div>
         <div class="page page2">
+            <div class="header">有你的地方就是幸福</div>
+            <div class="side-txt">
+                終於等到你
+            </div>
             <div class="banner">
                 <img src="img/m2.jpeg" alt="">
                 <div class="txt">
