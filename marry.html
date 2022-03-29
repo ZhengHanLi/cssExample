@@ -22,12 +22,20 @@
             overflow-y: scroll;
         }
 
+        .tag{
+            display: none;
+        }
         .page{
             width: 100%;
             height: 90vh;
             /* margin: auto; */
             position: relative;
             scroll-snap-align: start;
+        }
+        .space{
+            width: 100%;
+            height: 50vh;
+            /* background-color: #000; */
         }
 
         .page1 .header{
@@ -210,31 +218,12 @@
 
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
-    <script>
-        document.addEventListener('scroll', function(e) {
-        alert( window.scrollY );
 
-        // if (!ticking) {
-        //     window.requestAnimationFrame(function() {
-        //     doSomething(lastKnownScrollPosition);
-        //     ticking = false;
-        //     });
-
-        //     ticking = true;
-        // }
-        });
-        window.onload=function(){
-            // alert(window.innerHeight)
-            // alert(document.getElementById("page1").scrollHeight )
-            // document.addEventListener('scroll',function(){
-            //     alert("asd")
-            // })
-        }
-    </script>
 </head>
 <body>
     <div class="wrap">
         <div class="page page1">
+            <h2 class="tag">page1</h2>
             <div class="weddingPerson">
                 羅秉鏞 ＆ 李宛芯
             </div>
@@ -263,7 +252,11 @@
                 </p>
             </div>
         </div>
+        <div class="space">
+
+        </div>
         <div class="page page2">
+            <h2 class="tag">page2</h2>
             <div class="header">有你的地方就是幸福</div>
             <div class="side-txt">
                 終於等到你
@@ -285,8 +278,11 @@
                 </div>
             </div>
         </div>
-        <div class="page">
-            page 3
+        <div class="space">
+            
+        </div>
+        <div class="page page3">
+            <h2 class="tag">page3</h2>
             <form action="">
                 <h1>WELCOME</h1>
                 <div class="name">
@@ -362,5 +358,38 @@
         }
 
       </script>
+
+<script>
+
+        const observer = new IntersectionObserver(entries => {
+        entries.forEach(elem => {
+            // alert("cc")
+            if (elem.isIntersecting) {
+            const text = elem.target.querySelector('h2').innerText;
+            console.log('Ping! Visible: ', text);
+                // console.log(elem.target )
+
+                if(text=='page1')
+                {
+                    var node =document.querySelector('.page2 .side-txt');
+                    node.style.display = 'none';
+                }
+                if(text=='page2')
+                {
+                    var node =document.querySelector('.page2 .side-txt');
+                    node.style.display = 'block';
+                }
+                if(text=='page3')
+                {
+                    var node =document.querySelector('.page2 .side-txt');
+                    node.style.display = 'block';
+                }  
+            }
+        });
+        });
+
+        document.querySelectorAll('.page').forEach(elem => observer.observe(elem));
+    
+</script>
 </body>
 </html>
