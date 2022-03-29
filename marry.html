@@ -30,12 +30,12 @@
             scroll-snap-align: start;
         }
 
-        .page .header{
+        .page1 .header{
             letter-spacing: 1em;
             margin-bottom: 2em;
         }
 
-        .page .weddingPerson
+        .page1 .weddingPerson
         {
             position: absolute;
             font-size: 14px;
@@ -58,7 +58,7 @@
             }
         }
 
-        .banner{
+        .page1 .banner{
             width: 90%;
             height: 34vh;
             /* background-color: #0f0; */
@@ -66,7 +66,7 @@
             position: relative;
         }
 
-        .banner::before{
+        .page1 .banner::before{
             content: "2022";
             font-size: 10px;
             position: absolute;
@@ -74,7 +74,7 @@
             left: 1em;
         }
 
-        .banner .pic{
+        .page1 .banner .pic{
             margin-left: 15px;
             width: 95%;
             height: 200px;
@@ -83,7 +83,7 @@
             background-size: cover;
         }
 
-        .banner .pic::before{
+        .page1 .banner .pic::before{
             content: 'Dec. 03';
             font-size: 21px;
             padding: 0 10px;
@@ -97,11 +97,11 @@
             z-index: -1;
         }
 
-        .banner .pic img{
+        .page1 .banner .pic img{
             width: 70% ;
         }
 
-        .banner .pic p{
+        .page1 .banner .pic p{
             color: #fff;
             font-size: 30px;
             position: absolute;
@@ -109,7 +109,7 @@
             bottom: -10px;
         }
 
-        .banner .pic p::after{
+        .page1 .banner .pic p::after{
             content: 'invitation';
             color:rgb(190, 195, 199);
             font-size: 16px;
@@ -118,7 +118,7 @@
             margin-left:5em ;
         }
 
-        .centerImg {
+        .page1 .centerImg {
             width: 90%;
             height: 25vh;
             margin: auto;
@@ -126,28 +126,61 @@
             /* padding-top: 10px; */
         }
 
-        .centerImg .circle{
+        .page1 .centerImg .circle{
             width: 150px;
             height: 150px;
             border-radius: 50%;
             border: 1px solid #ccc;
             margin: auto;
         }
-        .centerImg .circle{
+        .page1 .centerImg .circle{
             color: #ccc;
             line-height: 120px;
             text-align: center;
         }
 
-        .content{
+        .page1 .content{
             width: 90%;
             margin: auto;
         }
 
-        .content p{
+        .page1 .content p{
             color: #ccc;
             text-align: center;
         }
+
+        .page2 .banner {
+ 
+        }
+
+        .page2 .banner img{
+            width: 95%;
+            margin: 20px 10px ;
+        }
+
+        .page2 .banner .txt{
+            text-align: center;
+        }
+
+        .page2 .footer{
+            width: 90%;
+            margin: auto;
+            margin-top: 4em;
+
+            display: flex;
+
+        }
+
+        .page2 .footer img{
+            /* width: 30%; */
+            height: 10vh;
+        }   
+        .page2 .footer .txt p{
+            font-size: 12px;
+            line-height: 0.5em;
+            margin-left: 1em;
+        }   
+
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
     <script>
@@ -156,7 +189,7 @@
 </head>
 <body>
     <div class="wrap">
-        <div class="page">
+        <div class="page page1">
             <div class="weddingPerson">
                 羅秉鏞 ＆ 李宛芯
             </div>
@@ -185,8 +218,23 @@
                 </p>
             </div>
         </div>
-        <div class="page">
-            page 2
+        <div class="page page2">
+            <div class="banner">
+                <img src="img/m2.jpeg" alt="">
+                <div class="txt">
+                    <p>Live,Love,Laught and be Happy</p>
+                    <p>生活在笑、愛與幸福中</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <img src="img/m3.jpeg" alt="">
+                <div class="txt">
+                    <p>還好我沒有放棄</p>
+                    <p>讓我等到陪我共度一生醫生的你</p>
+                    <p>只要你在我身邊，那就是幸福</p>
+                </div>
+            </div>
         </div>
         <div class="page">
             page 3
