@@ -258,6 +258,10 @@
             text-align: center;
         }
 
+        .page4 .userinfo > div{
+            margin: 0 0 20px;
+        }
+
         .page4 .letter .address{
             display: none;
         }
@@ -265,6 +269,20 @@
            width: 90%;
            margin-left: 2px;
            border-radius: 5px;
+        }
+
+        .senddiv{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #send{
+            background-color: rgb(222, 223, 213);
+            padding: 10px;
+            border-radius: 10px;
+            font-family: serif;
+            font-weight: 800;
+            font-size: 16px;
         }
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
@@ -431,7 +449,11 @@
                         <textarea name="" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
-                <input type="button" value="確定送出" id="send">
+                <div class="senddiv">
+
+                    <input type="button" value="確定送出" id="send">
+                                        
+                </div>
             </div>
         </div>
     </div>
