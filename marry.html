@@ -164,7 +164,8 @@
             /* margin-top: 3em; */
         }
 
-        .page2 .side-txt{
+        .page2 .side-txt,
+        .page3 .side-txt{
             position: fixed;
             width: 1.5em;
             /* letter-spacing: 2em; */
@@ -177,7 +178,7 @@
 
         @keyframes side-animation{
             from{
-                top:2em;
+                top:1em;
             }
             to{
                 top:5em;
@@ -234,12 +235,11 @@
         .page3 .banner .txt p{
             -webkit-writing-mode: vertical-rl;
             writing-mode: vertical-rl;
-            padding: 0;
+            /* padding: 0; */
             margin: 0;
         }
 
         .page3 .footer .txt p{
-            /* padding: 0; */
             margin: 0;
         }
 
@@ -310,6 +310,9 @@
         </div>
         <div class="page page3">
             <h2 class="tag">page3</h2>
+            <div class="side-txt">
+                終於等到你
+            </div>
             <div class="banner">
                 <img src="img/m04.jpg" alt="">
                 <div class="txt">
@@ -447,20 +450,20 @@
             const text = elem.target.querySelector('h2').innerText;
             console.log('Ping! Visible: ', text);
                 // console.log(elem.target )
-
+                document.querySelector('.page2 .side-txt').style.display = 'none';
+                document.querySelector('.page3 .side-txt').style.display = 'none';
                 if(text=='page1')
                 {
-                    var node =document.querySelector('.page2 .side-txt');
-                    node.style.display = 'none';
+
                 }
                 if(text=='page2')
                 {
                     var node =document.querySelector('.page2 .side-txt');
                     node.style.display = 'block';
                 }
-                if(text=='page4')
+                if(text=='page3')
                 {
-                    var node =document.querySelector('.page2 .side-txt');
+                    var node =document.querySelector('.page3 .side-txt');
                     node.style.display = 'block';
                 }  
             }
