@@ -170,7 +170,7 @@
             /* letter-spacing: 2em; */
             line-height: 2em;
             top: 5em;
-            right: 2em;
+            right: 1em;
             animation: side-animation 2s;
             display: none;
         }
@@ -215,6 +215,33 @@
             line-height: 0.5em;
             margin-left: 1em;
         }   
+
+        .page3 .banner{
+            display: flex;
+        }
+
+        .page3 .banner img{
+            width: 75%;
+        }
+
+        .page3 .banner .txt {
+            /* text-align: left; */
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+        }
+
+        .page3 .banner .txt p{
+            -webkit-writing-mode: vertical-rl;
+            writing-mode: vertical-rl;
+            padding: 0;
+            margin: 0;
+        }
+
+        .page3 .footer .txt p{
+            /* padding: 0; */
+            margin: 0;
+        }
 
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
@@ -279,10 +306,32 @@
             </div>
         </div>
         <div class="space">
-            
+
         </div>
         <div class="page page3">
             <h2 class="tag">page3</h2>
+            <div class="banner">
+                <img src="img/m04.jpg" alt="">
+                <div class="txt">
+                    <p>我因為有妳而幸福</p>
+                    <p>真幸運，能在這個世界找到妳！</p>
+                    <p>I'm always by your side</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="txt">
+                    <p>還好我沒有放棄</p>
+                    <p>讓我等到陪我共度一生醫生的你</p>
+                    <p>只要你在我身邊，那就是幸福</p>
+                </div>
+            </div>
+        </div>
+        <div class="space">
+            
+        </div>
+        <div class="page page4">
+            <h2 class="tag">page4</h2>
             <form action="">
                 <h1>WELCOME</h1>
                 <div class="name">
@@ -409,7 +458,7 @@
                     var node =document.querySelector('.page2 .side-txt');
                     node.style.display = 'block';
                 }
-                if(text=='page3')
+                if(text=='page4')
                 {
                     var node =document.querySelector('.page2 .side-txt');
                     node.style.display = 'block';
