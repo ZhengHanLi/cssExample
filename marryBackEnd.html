@@ -32,29 +32,10 @@
 <body>
     <table id="tblCustomers" cellspacing="0" cellpadding="0">
         <tr>
-            <th>Customer Id</th>
-            <th>Name</th>
-            <th>Country</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>John Hammond</td>
-            <td>United States</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Mudassar Khan</td>
-            <td>India</td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>Suzanne Mathews</td>
-            <td>France</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Robert Schidner</td>
-            <td>Russia</td>
+            <th>姓名</th>
+            <th>是否赴宴?</th>
+            <th>需要寄送喜帖嗎？</th>
+            <th>給新人的祝福</th>
         </tr>
     </table>
     <br />
@@ -96,28 +77,35 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore();
 
-    // const querySnapshot = await getDocs(collection(db, "users"));
+    const querySnapshot = await getDocs(collection(db, "attend"));
     // console.log(querySnapshot )
-    // querySnapshot.forEach((doc) => {
-    // console.log(`${doc.id} => ${doc.data()}`);
-    // var t=doc.data()
-    // console.log(t.first +" "+t.born )
-    // });
-
     const domNode=document.querySelector("#tblCustomers")
-    // console.log(domNode )
     let tr,td
-    for( let i=0;i<10;i++ )
-    {
+    querySnapshot.forEach((doc) => {
+        console.log(`${doc.id} => ${doc.data()}`);
+        var t=doc.data()
         tr=document.createElement("tr")
-        for( let j=0;j<3;j++ )
-        {
-            td=document.createElement("td")
-            td.textContent=j
-            tr.appendChild(td)
-        }
+        td=document.createElement("td")
+        td.textContent=t.name 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.atten 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.letter 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.memo 
+        tr.appendChild(td)
+
         domNode.appendChild(tr )
-    }
+        // console.log(t.name +" "+t.atten +" "+t.letter +" "+t.memo )
+    });
+
+
   </script>
 </body>
 </html>

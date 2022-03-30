@@ -294,16 +294,16 @@
                 <div class="attention">
                     <div class="title">是否赴宴?</div>
                     <div class="content">
-                        <input type="radio" name="attention" id="" checked>非常樂意
-                        <input type="radio" name="attention" id="">尚未決定
-                        <input type="radio" name="attention" id="">無法參加
+                        <input type="radio" name="attention" id="" value="非常樂意" checked>非常樂意
+                        <input type="radio" name="attention" id="" value="尚未決定">尚未決定
+                        <input type="radio" name="attention" id="" value="無法參加">無法參加
                     </div>
                 </div>
                 <div class="letter">
                     <div class="title">需要寄送喜帖嗎？</div>
                     <div class="content">
-                        <input type="radio" name="letter" id="" checked>需要
-                        <input type="radio" name="letter" id="">不需要
+                        <input type="radio" name="letter" id="" value="需要" checked>需要
+                        <input type="radio" name="letter" id="" value="不需要">不需要
                     </div>
                 </div>
                 <div class="memo">
@@ -312,7 +312,7 @@
                         <textarea name="" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
-                <input type="submit" value="確定送出">
+                <input type="button" value="確定送出" id="send">
             </form>
         </div>
     </div>
@@ -342,21 +342,51 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore();
 
-        try {
-            // const docRef = await addDoc11(collection(db, "attend"), {
-            //     name: "政翰",
-            //     attend: "出席",
-            //     big:1,
-            //     small:2,
-            //     vegetarian:0,
-            //     letter:"需要",
-            //     addres:"桃園市"
-            // });
-            // console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-        alert("儲存發生問題 請聯絡09xxxxxx")
-        }
+        document.getElementById("send").addEventListener('click',function(){
+            var node= document.querySelector(".name input")
+            var ds={'name':'','atten':'','letter':'','memo':''}
+            var msg="確認以下內容\r\n\r\n"
+            if ( !node.value )
+            {
+                alert("請輸入大名！！")
+                node.focus()
+                return;
+            }
+            msg+="您的姓名: "+node.value +"\r\n"
+            ds.name=node.value 
+            console.log( node.value )
 
+            var node= document.querySelector("input[name=attention]:checked")
+            msg+="是否赴宴?: "+node.value +"\r\n"
+            ds.atten=node.value
+            console.log( node.value)
+
+
+            var node= document.querySelector("input[name=letter]:checked")
+            msg+="需要寄送喜帖嗎?: "+node.value +"\r\n"
+            ds.letter=node.value 
+            console.log( node.value)
+
+            var node= document.querySelector(".memo textarea")
+            msg+="給新人的祝福?: "+node.value +"\r\n"
+            ds.memo=node.value 
+            console.log( node.value)
+
+            if( confirm(msg) )
+            {
+                try {
+                    const docRef = addDoc(collection(db, "attend"), ds);
+                    // console.log("Document written with ID: ", docRef.id);
+                    alert("儲存成功")
+                    document.querySelector(".name input").value=''
+                    document.querySelector(".memo textarea").value=''
+                } catch (e) {
+                    console.log(e)
+                    alert("儲存發生問題 請聯絡09xxxxxx")
+                }
+                //location.reload()
+            }
+        })
       </script>
 
 <script>
@@ -389,6 +419,7 @@
         });
 
         document.querySelectorAll('.page').forEach(elem => observer.observe(elem));
+
     
 </script>
 </body>
