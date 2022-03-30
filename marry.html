@@ -243,6 +243,29 @@
             margin: 0;
         }
 
+        .page4{
+            display: flex;
+            justify-content: center;
+        }
+        .page4 .userinfo{
+            width: 90%;
+            height: 70vh;
+            background-color: rgba(207, 204, 204, 0.3);
+        }
+
+        .page4 .userinfo h1{
+            margin: 0 0 .5em;
+            text-align: center;
+        }
+
+        .page4 .letter .address{
+            display: none;
+        }
+        .page4 .letter .address input{
+           width: 90%;
+           margin-left: 2px;
+           border-radius: 5px;
+        }
     </style>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js' integrity='sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==' crossorigin='anonymous'></script>
 
@@ -335,7 +358,7 @@
         </div>
         <div class="page page4">
             <h2 class="tag">page4</h2>
-            <form action="">
+            <div class="userinfo">   
                 <h1>WELCOME</h1>
                 <div class="name">
                     <div class="title">您的姓名</div>
@@ -347,15 +370,59 @@
                     <div class="title">是否赴宴?</div>
                     <div class="content">
                         <input type="radio" name="attention" id="" value="非常樂意" checked>非常樂意
-                        <input type="radio" name="attention" id="" value="尚未決定">尚未決定
-                        <input type="radio" name="attention" id="" value="無法參加">無法參加
+                        <div class="peopleNum">
+                            大人
+                            <select name="man" id="">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>位，
+                            小孩
+                            <select name="child" id="">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>位，
+                            茹素
+                            <select name="vage" id="">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>位
+                        </div><br>
+                        <input type="radio" name="attention" id="" value="尚未決定">尚未決定<br>
+                        <input type="radio" name="attention" id="" value="無法參加">無法參加<br>
                     </div>
                 </div>
                 <div class="letter">
                     <div class="title">需要寄送喜帖嗎？</div>
                     <div class="content">
-                        <input type="radio" name="letter" id="" value="需要" checked>需要
-                        <input type="radio" name="letter" id="" value="不需要">不需要
+                        <input type="radio" name="letter" id="" value="不需要" checked>不需要
+                        <input type="radio" name="letter" id="" value="需要" >需要
+                        <div class="address">
+                            <input type="text">
+                        </div>
                     </div>
                 </div>
                 <div class="memo">
@@ -365,7 +432,7 @@
                     </div>
                 </div>
                 <input type="button" value="確定送出" id="send">
-            </form>
+            </div>
         </div>
     </div>
 
@@ -396,7 +463,7 @@
 
         document.getElementById("send").addEventListener('click',function(){
             var node= document.querySelector(".name input")
-            var ds={'name':'','atten':'','letter':'','memo':''}
+            var ds={'name':'','atten':'','man':'','child':'','vage':'','letter':'','address':'','memo':''}
             var msg="確認以下內容\r\n\r\n"
             if ( !node.value )
             {
@@ -412,12 +479,42 @@
             msg+="是否赴宴?: "+node.value +"\r\n"
             ds.atten=node.value
             console.log( node.value)
+            if( node.value=='非常樂意' )
+            {
+                var flag=false;
+                var nodes=document.querySelectorAll('.peopleNum select')
+                for( node of nodes )
+                {
+                    ds[node.name]=node.value
+                    if(node.value!='0' )
+                        flag=true
+                }
 
+                if( !flag )
+                {
+                    alert("請選擇參加人數")
+                    document.querySelectorAll('.peopleNum select')[0].focus()
+                    return
+                }
+            }
 
             var node= document.querySelector("input[name=letter]:checked")
             msg+="需要寄送喜帖嗎?: "+node.value +"\r\n"
             ds.letter=node.value 
             console.log( node.value)
+            if( node.value=='需要' )
+            {
+                var node=document.querySelector('.address input')
+
+                if( !node.value )
+                {
+                    alert("請填寫喜帖寄送地址")
+                    node.focus()
+                    return
+                }
+                ds.address=node.value
+                msg+="喜帖寄送地址: "+node.value +"\r\n"
+            }
 
             var node= document.querySelector(".memo textarea")
             msg+="給新人的祝福?: "+node.value +"\r\n"
@@ -470,9 +567,32 @@
         });
         });
 
-        document.querySelectorAll('.page').forEach(elem => observer.observe(elem));
+        document.querySelectorAll('.page').forEach(elem => observer.observe(elem))
 
-    
+        var nodes=document.querySelectorAll('.page4 .attention input[name=attention]')
+        for( node of nodes ){
+            node.addEventListener('change',function(e){
+                document.querySelector('.peopleNum').style.display='none'
+                if ( event.target.value=='非常樂意')
+                    document.querySelector('.peopleNum').style.display='block'
+                else if ( event.target.value=='尚未決定')
+                ;
+                else if ( event.target.value=='無法參加')
+                ;
+            })
+        }
+
+        var nodes=document.querySelectorAll('.page4 .letter input[name=letter]')
+        for( node of nodes ){
+            node.addEventListener('change',function(e){
+                document.querySelector('.page4 .letter .address').style.display='none'
+                if ( event.target.value=='需要')
+                    document.querySelector('.page4 .letter .address').style.display='block'
+                else if ( event.target.value=='不需要')
+                ;
+
+            })
+        }
 </script>
 </body>
 </html>

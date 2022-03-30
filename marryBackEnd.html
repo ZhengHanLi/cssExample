@@ -34,7 +34,11 @@
         <tr>
             <th>姓名</th>
             <th>是否赴宴?</th>
+            <th>大人人數</th>
+            <th>小孩人數</th>
+            <th>茹素</th>
             <th>需要寄送喜帖嗎？</th>
+            <th>喜帖寄送地址</th>
             <th>給新人的祝福</th>
         </tr>
     </table>
@@ -94,7 +98,23 @@
         tr.appendChild(td)
 
         td=document.createElement("td")
+        td.textContent=t.man 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.child 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.vage 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
         td.textContent=t.letter 
+        tr.appendChild(td)
+
+        td=document.createElement("td")
+        td.textContent=t.address 
         tr.appendChild(td)
 
         td=document.createElement("td")
