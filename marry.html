@@ -53,9 +53,12 @@
             width: 1em;
             right: 2em;
             top: 3em;
-            animation-name: oxxo;
-            animation-duration:4s;
             z-index: 2;
+        }
+
+        .page1 .weddingPerson.active
+        {
+            animation: oxxo 4s;
         }
 
 
@@ -578,12 +581,13 @@
             if (elem.isIntersecting) {
             const text = elem.target.querySelector('h2').innerText;
             console.log('Ping! Visible: ', text);
-                // console.log(elem.target )        
+                // console.log(elem.target )     
+                document.querySelector('.page1 .weddingPerson').classList.remove('active')   
                 document.querySelector('.page2 .side-txt').classList.remove('active')
                 document.querySelector('.page3 .side-txt').classList.remove('active')
                 if(text=='page1')
                 {
-
+                    document.querySelector('.page1 .weddingPerson').classList.add('active')
                 }
                 if(text=='page2')
                 {
