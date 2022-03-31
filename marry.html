@@ -174,8 +174,14 @@
             line-height: 2em;
             top: 5em;
             right: 1em;
-            animation: side-animation 2s;
+            /* animation: side-animation 2s; */
             display: none;
+        }
+
+        .page2 .side-txt.active,
+        .page3 .side-txt.active{
+            animation: side-animation 2s;
+            display: block;
         }
 
         @keyframes side-animation{
@@ -572,22 +578,20 @@
             if (elem.isIntersecting) {
             const text = elem.target.querySelector('h2').innerText;
             console.log('Ping! Visible: ', text);
-                // console.log(elem.target )
-                document.querySelector('.page2 .side-txt').style.display = 'none';
-                document.querySelector('.page3 .side-txt').style.display = 'none';
+                // console.log(elem.target )        
+                document.querySelector('.page2 .side-txt').classList.remove('active')
+                document.querySelector('.page3 .side-txt').classList.remove('active')
                 if(text=='page1')
                 {
 
                 }
                 if(text=='page2')
                 {
-                    var node =document.querySelector('.page2 .side-txt');
-                    node.style.display = 'block';
+                    document.querySelector('.page2 .side-txt').classList.add('active')
                 }
                 if(text=='page3')
                 {
-                    var node =document.querySelector('.page3 .side-txt');
-                    node.style.display = 'block';
+                    document.querySelector('.page3 .side-txt').classList.add('active')
                 }  
             }
         });
